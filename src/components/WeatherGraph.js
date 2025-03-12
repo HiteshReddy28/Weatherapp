@@ -162,33 +162,34 @@ const WeatherGraph = ({ forecast }) => {
       <div className="graph-container">
         {chartData.length > 0 ? (
           <ResponsiveContainer width="100%" height={300}>
-            <LineChart
-              data={chartData}
-              margin={{ top: 20, right: 30, left: 20, bottom: 10 }}
-            >
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis 
-                dataKey="time" 
-                padding={{ left: 20, right: 20 }} 
-              />
-              <YAxis 
-                domain={config.domain}
-                tickCount={6} 
-                unit={config.unit}
-              />
-              <Tooltip content={<CustomTooltip />} />
-              <Legend />
-              <Line
-                type="monotone"
-                dataKey={config.dataKey}
-                name={config.name}
-                stroke={config.stroke}
-                strokeWidth={2}
-                dot={{ r: 4 }}
-                activeDot={{ r: 7 }}
-              />
-            </LineChart>
-          </ResponsiveContainer>
+          <LineChart
+            data={chartData}
+            margin={{ top: 20, right: 30, left: 20, bottom: 10 }}
+          >
+            {/* Remove or adjust the CartesianGrid to hide lines */}
+            <CartesianGrid strokeDasharray="3 3" strokeOpacity={0} />
+            <XAxis 
+              dataKey="time" 
+              padding={{ left: 20, right: 20 }} 
+            />
+            <YAxis 
+              domain={config.domain}
+              tickCount={6} 
+              unit={config.unit}
+            />
+            <Tooltip content={<CustomTooltip />} />
+            <Legend />
+            <Line
+              type="monotone"
+              dataKey={config.dataKey}
+              name={config.name}
+              stroke={config.stroke}
+              strokeWidth={2}
+              dot={{ r: 4 }}
+              activeDot={{ r: 7 }}
+            />
+          </LineChart>
+        </ResponsiveContainer>
         ) : (
           <div className="no-data">
             <FontAwesomeIcon icon={faArrowsLeftRight} />
